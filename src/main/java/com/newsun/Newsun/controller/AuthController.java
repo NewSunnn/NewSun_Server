@@ -34,4 +34,17 @@ public class AuthController {
         String accessToken = oAuth2Service.getAccessToken(code, ELoginProvider.GOOGLE);
         oAuth2Service.login(response, accessToken, ELoginProvider.GOOGLE);
     }
+
+    @GetMapping("/kakao")
+    public ResponseDto<Map<String,String>> getKakaoRedirectUrl(){
+        Map<String, String> map = new HashMap<>();
+        map.put("url", oAuth2Service.getRedirectUrl(ELoginProvider.KAKAO));
+        return ResponseDto.ok(map);
+    }
+
+    @GetMapping("/kakao/callback")
+    public void getNaverAccessToken(String code, HttpServletResponse response) throws IOException {
+        String accessToken = oAuth2Service.getAccessToken(code, ELoginProvider.KAKAO);
+        oAuth2Service.login(response, accessToken, ELoginProvider.KAKAO);
+    }
 }

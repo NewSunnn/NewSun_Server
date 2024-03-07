@@ -6,7 +6,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Getter
 public enum ELoginProvider {
-    GOOGLE("google");
+    GOOGLE("google"),
+    KAKAO("kakao");
 
     private final String name;
 }
